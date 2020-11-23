@@ -45,6 +45,8 @@ if (has("termguicolors"))
 endif
 
 syntax enable
+filetype plugin indent on
+
 set background=dark
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
