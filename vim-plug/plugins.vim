@@ -30,8 +30,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
    
     " intellisense
-    Plug 'oblitum/youcompleteme'
+    "Plug 'oblitum/youcompleteme'
     "Plug 'rust-lang/rust.vim'
+
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+    Plug 'nvim-lua/diagnostic-nvim'
+    "Plug 'neovim/nvim-lsp'
 
     " snippets
     Plug 'honza/vim-snippets'

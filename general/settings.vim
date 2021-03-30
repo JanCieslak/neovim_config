@@ -1,5 +1,6 @@
 let g:mapleader = "\<Space>"
 
+set guicursor=
 set rnu
 set nowrap
 set smartcase
@@ -45,7 +46,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-filetype plugin indent on
+"filetype plugin indent on
 
 set background=dark
 
@@ -53,3 +54,27 @@ au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm al
 
 " You can't stop me
 cmap w!! w !sudo tee %
+
+" Lsp config
+let g:diagnostic_virtual_text_prefix = '<'
+
+lua require'lspconfig'.tsserver.setup{on_attack=require'completion'.on_attach}
+
+":lua << EOF
+    "local nvim_lsp = require('lspconfig')
+    "local diagnostic = require('diagnostic')
+    "local completion = require('completion')
+
+    "local custom_on_attach = function(client, bufnr)
+      "diagnostic.on_attach()
+      "completion.on_attach()
+    "end 
+
+    "local servers = { 'tsserver', 'rust_analyzer', 'kotlin_language_server' }
+
+    "for _, lsp in ipairs(servers) do
+      "nvim_lsp[lsp].setup{
+        "on_attach = require'completion'.on_attaccustom_on_attach
+      "}
+    "end
+"EOF
